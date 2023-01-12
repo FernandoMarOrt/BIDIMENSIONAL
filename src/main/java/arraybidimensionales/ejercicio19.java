@@ -14,7 +14,7 @@ public class ejercicio19 {
 
     public static void main(String[] args) {
 
-        boolean[][] asientos = new boolean[25][4];
+        String[][] asientos = new String[25][4];
 
         Scanner teclado = new Scanner(System.in);
 
@@ -25,7 +25,7 @@ public class ejercicio19 {
 
             for (int j = 0; j < asientos[i].length; j++) {
 
-                asientos[i][j] = true;
+                asientos[i][j] = "";
 
             }
 
@@ -40,7 +40,8 @@ public class ejercicio19 {
                            Selecciona una de estas opciones por favor:
                            1.Reservar asientos
                            2.Cancelar asientos
-                           3.Salir
+                           3.Mostrar asientos
+                           4.Salir
                            """);
 
             opcion = teclado.nextInt();
@@ -58,18 +59,16 @@ public class ejercicio19 {
                     System.out.println("Dime un asiento de la fila: " + fila);
                     asiento = teclado.nextInt();
 
-                    if(asientos[fila][asiento] == false) {
-                        
+                    if (asientos[fila][asiento] == "O") {
+
                         System.out.println("Ese asiento esta ocupado");
                         System.out.println("");
-                        
-                        
-                        
+
                     } else {
-                        
-                        asientos[fila][asiento] = false;
+
+                        asientos[fila][asiento] = "O";
                         System.out.println("Su asiento se ha reservado correctamente");
-                        
+
                         System.out.println("");
                     }
 
@@ -79,34 +78,55 @@ public class ejercicio19 {
 
                     System.out.println("Ha elegido cancelar un asiento");
                     System.out.println("");
-                    
+
                     System.out.println("Dime una fila");
                     fila = teclado.nextInt();
 
                     System.out.println("Dime un asiento de la fila: " + fila);
                     asiento = teclado.nextInt();
-                    
-                    if(asientos[fila][asiento] == true) {
-                        
+
+                    if (asientos[fila][asiento] == "") {
+
                         System.out.println("Ese asiento no esta reservado");
-                        
+
                         System.out.println("");
-                        
+
                     } else {
-                        
-                        asientos[fila][asiento] = true;
+
+                        asientos[fila][asiento] = "";
                         System.out.println("Se ha cancelado correctamente su asiento");
-                        
+
                         System.out.println("");
-                        
+
                     }
-                    
+
+                    break;
+
+                case 3:
+
+                    System.out.println("Ha elegido mostrar los asientos");
+                    System.out.println("");
+
+                    for (int i = 0; i < asientos.length; i++) {
+                        for (int j = 0; j < asientos[i].length; j++) {
+
+                            if (j != asientos[i].length - 1) {
+                                
+                                System.out.print("[" + asientos[i][j] + "]" + "-");
+                                
+                            } else {
+                                
+                                System.out.println("[" + asientos[i][j] + "]");
+                               
+                            }
+                        }
+                    }
 
                     break;
 
             }
 
-        } while (opcion != 3);
+        } while (opcion != 4);
 
     }
 
